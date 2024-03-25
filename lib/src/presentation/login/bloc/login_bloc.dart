@@ -1,22 +1,21 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:intl/intl.dart';
-import 'package:wave_clone/src/presentation/login/bloc/login_events.dart';
-import 'package:wave_clone/src/presentation/login/bloc/login_states.dart';
+import 'package:wave_clone/src/presentation/login/bloc/login_event.dart';
+import 'package:wave_clone/src/presentation/login/bloc/login_state.dart';
 
-class LoginBloc extends Bloc<LoginEvent,LoginFormState>{
-  LoginBloc():super(LoginFormState()){
+class LoginBloc extends Bloc<LoginEvent, LoginState> {
+  LoginBloc()
+      : super(const LoginState(pinCode: "", loginState: FormStatus.initial)) {
     on<LoginEventPinCodeChanged>(_onLoginEventPinCodeChanged);
-    on<LoginEventForgetButtonPressed>(_onLoginEventForgetButtonPressed);
-    on<LoginEventForgetButtonReleased>(_onLoginEventForgetButtonReleased);
   }
 
-  _onLoginEventPinCodeChanged(LoginEventPinCodeChanged event,Emitter<LoginFormState> emit){
-    emit(state.copyWith(pinCode:event.pinCode));
-  }
-  _onLoginEventForgetButtonPressed(LoginEventForgetButtonPressed event,Emitter<LoginFormState> emit){
-emit (state.copyWith(loginStates: LoginStateForgetButtonPressed()));
-  }
-  _onLoginEventForgetButtonReleased(LoginEventForgetButtonReleased event,Emitter<LoginFormState> emit){
-    emit (state.copyWith(loginStates: LoginStateForgetButtonReleased()));
+  void _onLoginEventPinCodeChanged(
+      LoginEventPinCodeChanged event, Emitter<LoginState> emit) async {
+    emit(state.copyWith(pinCode: event.pinCode));
+    if (state.pinCode.isNotEmpty) {
+      emit(state.copyWith(loginState: FormStatus.loading));
+      await Future.delayed(const Duration(seconds: 5));
+      emit(state.copyWith(loginState: FormStatus.success));
+    }
+    ;
   }
 }

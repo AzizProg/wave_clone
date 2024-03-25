@@ -1,3 +1,3 @@
 abstract class DataLocal<T>{
-  Future<T> getTransfer();
+  Future<T> getTransaction();
 }
