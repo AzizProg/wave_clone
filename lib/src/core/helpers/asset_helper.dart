@@ -12,6 +12,8 @@ class AssetsHelper{
   static String basicCard="assets/home/basic_card.png";
   static String giftBox="assets/giftbox.png";
   static String transferToPerson="assets/home/transfer_to_person.png";
+  static String qrCode="assets/home/qr_code.png";
+  static String qrCodeWithOutBg="assets/home/qr_code_without_bg.png";
 
   //payment assets
   static String payBill="assets/home/pay_bill.png";

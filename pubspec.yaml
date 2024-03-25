@@ -71,8 +71,8 @@ flutter:
      - assets/
      - assets/bank/
      - assets/home/
-     - assets/payment/
-     - assets/logo/
+     #- assets/payment/
+     #- assets/logo/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

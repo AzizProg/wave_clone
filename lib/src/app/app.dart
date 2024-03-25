@@ -13,12 +13,18 @@ class MyApp extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (_, child) {
-          return  MaterialApp(
+          return MaterialApp(
             onGenerateRoute: (settings) => HomePage.route(),
             title: 'Wave clone',
             debugShowCheckedModeBanner: false, // Thème sombre par défaut
-            themeMode:ThemeMode.light,
-            home:const LoginPage() ,
+            themeMode: ThemeMode.light,
+            home: const LoginPage(),
+
+            builder: (_, widget) {
+              return MediaQuery(
+                  data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
+                  child: widget!);
+            },
           );
         });
   }

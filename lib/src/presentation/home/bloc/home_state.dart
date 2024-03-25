@@ -1,30 +1,27 @@
 import 'package:equatable/equatable.dart';
 
+import '../../../domain/entity/transaction_entity.dart';
 
-abstract class HomeState extends Equatable{
-  const HomeState();
+enum BalanceStatus { displayed, hidden }
+
+enum TransactionStatus { initial, loading, success, failed }
+
+class HomeState extends Equatable {
+  final BalanceStatus balanceStatus;
+  final TransactionStatus transactionStatus;
+   List<TransactionEntity>? transactions;
+   HomeState(
+      {this.balanceStatus = BalanceStatus.displayed,
+      this.transactionStatus = TransactionStatus.initial,this.transactions});
   @override
-  // TODO: implement props
-  List<Object?> get props => [];
+  List<Object?> get props => [transactionStatus, balanceStatus];
 
-}
-
-
-class HomeStateInitial extends HomeState{
-
-
-}
-class HomeStateLoading extends HomeState{
-  const HomeStateLoading();
-@override
-
-  List<Object?> get props => super.props;
-}
-
-class HomeStateFailed extends HomeState{
-
-}
-
-class HomeStateSuccess extends HomeState{
-
+  HomeState copyWith(
+      {TransactionStatus? transactionStatus, BalanceStatus? balanceStatus,List<TransactionEntity>? transactions}) {
+    return HomeState(
+        transactionStatus: transactionStatus ?? this.transactionStatus,
+        balanceStatus: balanceStatus ?? this.balanceStatus,
+        transactions: transactions ?? this.transactions,
+    );
+  }
 }

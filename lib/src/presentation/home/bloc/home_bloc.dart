@@ -6,19 +6,30 @@ import 'package:wave_clone/src/presentation/home/bloc/home_state.dart';
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc({required TransactionRepositoryImpl transactionRepositoryImpl})
       : _repositoryImpl = transactionRepositoryImpl,
-        super(HomeStateInitial()) {
-
+        super( HomeState()) {
     on<HomeEventGetAllTransactions>(_getAllTransactions);
+    on<HomeEventShowBalance>(_showBalance);
+    on<HomeEventHideBalance>(_hideBalance);
   }
 
-  TransactionRepositoryImpl _repositoryImpl;
+  final TransactionRepositoryImpl _repositoryImpl;
 
-  Future<void> _getAllTransactions(HomeEventGetAllTransactions event,Emitter<HomeState> emit) async{
-    emit(HomeStateLoading());
-    try{
-      await _repositoryImpl.getAllTransaction();
-    } catch(e){
-      emit(HomeStateFailed());
+  Future<void> _getAllTransactions(
+      HomeEventGetAllTransactions event, Emitter<HomeState> emit) async {
+    emit(state.copyWith(transactionStatus: TransactionStatus.loading));
+    try {
+      final transactions = await _repositoryImpl.getAllTransaction();
+      emit(state.copyWith(transactionStatus: TransactionStatus.success,transactions: transactions));
+    } catch (e) {
+      emit(state.copyWith(transactionStatus: TransactionStatus.failed));
     }
+  }
+
+  void _showBalance(HomeEventShowBalance event, Emitter<HomeState> emit) {
+    emit(state.copyWith(balanceStatus: BalanceStatus.displayed));
+  }
+
+  void _hideBalance(HomeEventHideBalance event, Emitter<HomeState> emit) {
+    emit(state.copyWith(balanceStatus: BalanceStatus.hidden));
   }
 }
