@@ -1,6 +1,6 @@
 class RoutesNames{
-  static String login="/";
-  static String home="/home";
-  static String transferInfo="transfer_info";
-  static String settings="/settings";
+  static const String login="/";
+  static const String home="/home";
+  static const String transationInfo="transfer_info";
+  static const String settings="/settings";
 }

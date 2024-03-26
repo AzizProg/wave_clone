@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wave_clone/src/config/route_manager.dart';
 import 'package:wave_clone/src/presentation/home/home.dart';
 import 'package:wave_clone/src/presentation/login/login.dart';
 
@@ -12,14 +13,14 @@ class MyApp extends StatelessWidget {
         designSize: const Size(365, 680),
         minTextAdapt: true,
         splitScreenMode: true,
+
         builder: (_, child) {
           return MaterialApp(
-            onGenerateRoute: (settings) => HomePage.route(),
+
+            onGenerateRoute: (settings) => RouteManager.onGenerateRoute(settings),
             title: 'Wave clone',
             debugShowCheckedModeBanner: false, // Thème sombre par défaut
             themeMode: ThemeMode.light,
-            home: const LoginPage(),
-
             builder: (_, widget) {
               return MediaQuery(
                   data: MediaQuery.of(context).copyWith(textScaleFactor: 1),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wave_clone/src/core/constants/route_names.dart';
 import 'package:wave_clone/src/core/helpers/asset_helper.dart';
 import 'package:wave_clone/src/core/helpers/size_helper.dart';
 import 'package:wave_clone/src/presentation/home/home.dart';
@@ -21,8 +22,8 @@ class LoginView extends StatelessWidget {
         body: BlocListener<LoginBloc, LoginState>(
           listener: (BuildContext context, state) {
             if (state.loginState == FormStatus.success) {
-              Navigator.pushAndRemoveUntil(
-                  context, HomePage.route(), (route) => false);
+              Navigator.pushNamedAndRemoveUntil(context, RoutesNames.home
+                  , (route) => false);
             }
           },
           child: BlocBuilder<LoginBloc, LoginState>(

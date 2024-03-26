@@ -17,4 +17,7 @@ class AssetsHelper{
 
   //payment assets
   static String payBill="assets/home/pay_bill.png";
+
+  //transaction_info
+  static String depositIcon="assets/transaction_info/deposit_icon.png";
 }

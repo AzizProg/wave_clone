@@ -71,7 +71,7 @@ flutter:
      - assets/
      - assets/bank/
      - assets/home/
-     #- assets/payment/
+     - assets/transaction_info/
      #- assets/logo/
 
   # An image asset can refer to one or more resolution-specific "variants", see

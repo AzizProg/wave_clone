@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wave_clone/src/core/constants/route_names.dart';
 import 'package:wave_clone/src/core/helpers/color_helper.dart';
 import 'package:wave_clone/src/core/helpers/size_helper.dart';
 import 'package:wave_clone/src/presentation/home/bloc/home_bloc.dart';
@@ -10,6 +11,7 @@ import 'package:wave_clone/src/presentation/home/component/home_action_buttons.d
 import 'package:wave_clone/src/presentation/home/component/custom_sliver_app_bar.dart';
 import 'package:wave_clone/src/presentation/home/component/transactions_section.dart';
 import 'package:wave_clone/src/presentation/home/component/wave_card.dart';
+import 'package:wave_clone/src/presentation/transaction_info/view/transaction_info_page.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -26,7 +28,6 @@ class HomeView extends StatelessWidget {
           child: BlocBuilder<HomeBloc, HomeState>(
             builder: (_, state) {
               return CustomScrollView(
-
                 slivers: [
                   SliverPersistentHeader(
                       delegate: CustomSliverAppBar(
@@ -54,7 +55,8 @@ class HomeView extends StatelessWidget {
                             ),
 
                             //Show transactions list under Actions Buttons
-                            const Expanded(child: TransactionSection()),
+                            Expanded(
+                                child: TransactionSection()),
                           ]),
                         ),
 
