@@ -3,9 +3,9 @@ import 'package:equatable/equatable.dart';
 enum FormStatus { initial, loading, failed, success }
 
 class LoginState extends Equatable {
-  final String pinCode;
+   String pinCode;
   final FormStatus loginState;
-  const LoginState({required this.pinCode, required this.loginState});
+   LoginState({required this.pinCode, required this.loginState});
 
   LoginState copyWith({String? pinCode, FormStatus? loginState}) {
     return LoginState(

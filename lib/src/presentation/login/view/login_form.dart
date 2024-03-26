@@ -54,6 +54,7 @@ class LoginView extends StatelessWidget {
                     Flexible(
                         child: Column(
                       children: [
+
                         IgnorePointer(
                           ignoring: state.loginState == FormStatus.loading
                               ? true

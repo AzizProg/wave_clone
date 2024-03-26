@@ -28,7 +28,7 @@ class PinCodeCircle extends StatelessWidget {
   }
 
   Widget _circle(Color color) {
-    return Container(
+    return AnimatedContainer(
       width: SizesHelper.width(15),
       height: SizesHelper.height(15),
       margin: EdgeInsets.all(SizesHelper.width(10)),
@@ -36,6 +36,7 @@ class PinCodeCircle extends StatelessWidget {
         color: color,
         shape: BoxShape.circle,
       ),
+      duration: const Duration(milliseconds: 300),
     );
   }
 }

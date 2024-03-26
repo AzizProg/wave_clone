@@ -40,7 +40,7 @@ class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
               //TODO make transformation scale for transition
               duration: const Duration(seconds: 1),
               child: Transform.scale(
-                scale: 1,
+                scale: 1.5,
                 alignment: Alignment.bottomCenter,
                 child: InkWell(
                   onTap: () {
@@ -49,6 +49,7 @@ class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
                         : context.read<HomeBloc>().add(HomeEventShowBalance());
                   },
                   child: Row(
+                    mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         state.balanceStatus == BalanceStatus.hidden

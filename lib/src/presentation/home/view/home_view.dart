@@ -26,15 +26,17 @@ class HomeView extends StatelessWidget {
           child: BlocBuilder<HomeBloc, HomeState>(
             builder: (_, state) {
               return CustomScrollView(
-                physics: const ClampingScrollPhysics(),
+
                 slivers: [
                   SliverPersistentHeader(
                       delegate: CustomSliverAppBar(
-                          balance: 50000, maxAppBarSize: 0, minAppBarSize: 0),
+                          balance: 50000,
+                          maxAppBarSize: 100,
+                          minAppBarSize: 50),
                       pinned: true),
 
                   //Transaction list and ActionsButtons
-                  SliverToBoxAdapter(
+                  SliverFillRemaining(
                     child: Stack(
                       children: [
                         Container(
@@ -52,7 +54,7 @@ class HomeView extends StatelessWidget {
                             ),
 
                             //Show transactions list under Actions Buttons
-                            const TransactionSection(),
+                            const Expanded(child: TransactionSection()),
                           ]),
                         ),
 
@@ -60,7 +62,7 @@ class HomeView extends StatelessWidget {
                         const WaveCard()
                       ],
                     ),
-                  ),
+                  )
                 ],
               );
             },
