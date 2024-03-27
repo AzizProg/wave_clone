@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wave_clone/src/presentation/home/bloc/home_state.dart';
 import 'package:wave_clone/src/presentation/login/bloc/login_bloc.dart';
 import 'package:wave_clone/src/presentation/login/bloc/login_state.dart';
 import '../../../core/helpers/color_helper.dart';
 import '../../../core/helpers/size_helper.dart';
+import '../../home/bloc/home_bloc.dart';
 
 class NumericPad extends StatelessWidget {
   final Function(int) selectedValue;
@@ -15,28 +17,32 @@ class NumericPad extends StatelessWidget {
     List randPad = List.generate(10, (index) => _buildNumber(index));
 
     return BlocListener<LoginBloc, LoginState>(
+      listenWhen: (previous,next)=> previous.pinCode !=next.pinCode,
       listener: (BuildContext context, state) {
-        if (state.loginState == FormStatus.initial) {
-          randPad.shuffle();
-        }
+       randPad.shuffle();
       },
-      child: Column(
-        children: [
-          for (int i = 0; i < 3; i++)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [...randPad.sublist(i * 3, i * 3 + 3)],
-            ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      child:BlocBuilder<LoginBloc,LoginState>(
+        buildWhen: (previous,next)=> previous.pinCode != next.pinCode,
+        builder:(_,state) {
+          return Column(
             children: [
-              _buildSpace(),
-              randPad.last,
-              _buildBackSpace(),
+              for (int i = 0; i < 3; i++)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [...randPad.sublist(i * 3, i * 3 + 3)],
+                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildSpace(),
+                  randPad.last,
+                  _buildBackSpace(),
+                ],
+              ),
             ],
-          ),
-        ],
-      ),
+          );
+        },
+   )
     );
   }
 

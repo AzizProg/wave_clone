@@ -22,8 +22,8 @@ class LoginView extends StatelessWidget {
         body: BlocListener<LoginBloc, LoginState>(
           listener: (BuildContext context, state) {
             if (state.loginState == FormStatus.success) {
-              Navigator.pushNamedAndRemoveUntil(context, RoutesNames.home
-                  , (route) => false);
+              Navigator.pushNamedAndRemoveUntil(
+                  context, RoutesNames.home, (route) => false);
             }
           },
           child: BlocBuilder<LoginBloc, LoginState>(
@@ -31,48 +31,47 @@ class LoginView extends StatelessWidget {
               return Padding(
                 padding: EdgeInsets.all(SizesHelper.width(10)),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
                   children: [
-
-                    Flexible(
-                        fit: FlexFit.tight,
-                        child: Image.asset(
-                          AssetsHelper.waveLoog,
-                          width: SizesHelper.width(50),
-                        )),
-                    Flexible(
-                        child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        PinCodeCircle(
-                          pinCode: state.pinCode.toString(),
-                        ),
-                        state.loginState == FormStatus.loading
-                            ? const CircularProgressIndicator()
-                            : Container()
-                      ],
-                    )),
-                    Flexible(
-                        child: Column(
-                      children: [
-
-                        IgnorePointer(
-                          ignoring: state.loginState == FormStatus.loading
-                              ? true
-                              : false,
-                          child: NumericPad(
-                            selectedValue: (selectedValue) => context
-                                .read<LoginBloc>()
-                                .add(LoginEventPinCodeChanged(
-                                    pinCode: selectedValue.toString())),
+                    Expanded(
+                      flex: 2,
+                      child: Image.asset(
+                        AssetsHelper.waveLoog,
+                        width: SizesHelper.width(50),
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          PinCodeCircle(
+                            pinCode: state.pinCode.toString(),
                           ),
-                        ),
-                        SizedBox(
-                          height: SizesHelper.height(10),
-                        ),
-                        ForgetPasswordButton(onTap: () => null),
-                      ],
-                    ))
+                          state.loginState == FormStatus.loading
+                              ? const CircularProgressIndicator()
+                              : Container()
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                        flex: 2,
+                        child: Column(
+                          children: [
+                            IgnorePointer(
+                              ignoring: state.loginState == FormStatus.loading
+                                  ? true
+                                  : false,
+                              child: NumericPad(
+                                selectedValue: (selectedValue) => context
+                                    .read<LoginBloc>()
+                                    .add(LoginEventPinCodeChanged(
+                                        pinCode: selectedValue.toString())),
+                              ),
+                            ),
+                            const Spacer(),
+                            ForgetPasswordButton(onTap: () => null),
+                          ],
+                        ))
                   ],
                 ),
               );
