@@ -16,12 +16,10 @@ class InfoDeposit extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        RotatedBox(
-            quarterTurns: 2,
-            child: Image.asset(
-              AssetsHelper.payBill,
-              width: SizesHelper.width(40),
-            )),
+        Image.asset(
+          AssetsHelper.transferToPerson,
+          width: SizesHelper.width(50),
+        ),
         spaceBetweenWidget(spacerSize: 20),
         Text(
           "${transaction.amount}F",
@@ -55,7 +53,7 @@ class InfoDeposit extends StatelessWidget {
               ?.copyWith(color: Colors.grey),
         ),
         Text(
-          "${0}F",
+          "${(transaction.amount * 0.01).toInt()}F",
           style: Theme.of(context).textTheme.bodyLarge,
         ),
         spaceBetweenWidget(),
