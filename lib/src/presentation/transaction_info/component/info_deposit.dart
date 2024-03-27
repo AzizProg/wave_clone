@@ -19,7 +19,7 @@ class InfoDeposit extends StatelessWidget {
         RotatedBox(
             quarterTurns: 2,
             child: Image.asset(
-              AssetsHelper.depositIcon,
+              AssetsHelper.payBill,
               width: SizesHelper.width(40),
             )),
         spaceBetweenWidget(spacerSize: 20),
@@ -30,10 +30,91 @@ class InfoDeposit extends StatelessWidget {
               .headlineSmall
               ?.copyWith(fontWeight: FontWeight.bold),
         ),
-        transactionTitleSwitch(transaction, context),
+        Text(
+          "De ${transaction.senderName} ${transaction.senderPhoneNumber}",
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
         spaceBetweenWidget(),
-        const Text("Montant reçu"),
-        Text("${transaction.amount - (transaction.amount * 0.01)}")
+        Text(
+          "Montant reçu",
+          style: Theme.of(context)
+              .textTheme
+              .titleSmall
+              ?.copyWith(color: Colors.grey),
+        ),
+        Text(
+          "${transaction.amount}",
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+        spaceBetweenWidget(),
+        Text(
+          "Frais",
+          style: Theme.of(context)
+              .textTheme
+              .titleSmall
+              ?.copyWith(color: Colors.grey),
+        ),
+        Text(
+          "${0}F",
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+        spaceBetweenWidget(),
+        Text(
+          "Status",
+          style: Theme.of(context)
+              .textTheme
+              .titleSmall
+              ?.copyWith(color: Colors.grey),
+        ),
+        Text(
+          "Effectué",
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+
+        spaceBetweenWidget(),
+        Text(
+          "Date et heure",
+          style: Theme.of(context)
+              .textTheme
+              .titleSmall
+              ?.copyWith(color: Colors.grey),
+        ),
+        Text(
+          transaction.date,
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+        spaceBetweenWidget(),
+        Text(
+          "Nouveau solde",
+          style: Theme.of(context)
+              .textTheme
+              .titleSmall
+              ?.copyWith(color: Colors.grey),
+        ),
+        Text(
+          "${transaction.balance}F",
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+        spaceBetweenWidget(),
+        Text(
+          "ID de la transaction",
+          style: Theme.of(context)
+              .textTheme
+              .titleSmall
+              ?.copyWith(color: Colors.grey),
+        ),
+        Text(
+          transaction.id,
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+        spaceBetweenWidget(spacerSize: 20),
+        Text(
+          "En partenariat avec UBA",
+          style: Theme.of(context)
+              .textTheme
+              .titleSmall
+              ?.copyWith(color: Colors.grey),
+        ),
       ],
     );
   }

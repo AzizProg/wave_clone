@@ -3,7 +3,6 @@ import 'package:equatable/equatable.dart';
 import '../../../domain/entity/transaction_entity.dart';
 
 enum BalanceStatus { displayed, hidden }
-
 enum TransactionStatus { initial, loading, success, failed }
 
 class HomeState extends Equatable {
