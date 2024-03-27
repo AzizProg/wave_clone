@@ -3,16 +3,16 @@ import 'package:equatable/equatable.dart';
 enum FormStatus { initial, loading, failed, success }
 
 class LoginState extends Equatable {
-   String pinCode;
-  final FormStatus loginState;
-   LoginState({required this.pinCode, required this.loginState});
+  String pinCode;
+  final FormStatus formStatus;
+  LoginState({this.pinCode = "", this.formStatus = FormStatus.initial});
 
-  LoginState copyWith({String? pinCode, FormStatus? loginState}) {
+  LoginState copyWith({String? pinCode, FormStatus? formStatus}) {
     return LoginState(
         pinCode: pinCode ?? this.pinCode,
-        loginState: loginState ?? this.loginState);
+        formStatus: formStatus ?? this.formStatus);
   }
 
   @override
-  List<Object?> get props => [pinCode, loginState];
+  List<Object?> get props => [pinCode, formStatus];
 }

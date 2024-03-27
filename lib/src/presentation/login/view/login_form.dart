@@ -21,7 +21,7 @@ class LoginView extends StatelessWidget {
       child: Scaffold(
         body: BlocListener<LoginBloc, LoginState>(
           listener: (BuildContext context, state) {
-            if (state.loginState == FormStatus.success) {
+            if (state.formStatus == FormStatus.success) {
               Navigator.pushNamedAndRemoveUntil(
                   context, RoutesNames.home, (route) => false);
             }
@@ -47,7 +47,7 @@ class LoginView extends StatelessWidget {
                           PinCodeCircle(
                             pinCode: state.pinCode.toString(),
                           ),
-                          state.loginState == FormStatus.loading
+                          state.formStatus == FormStatus.loading
                               ? const CircularProgressIndicator()
                               : Container()
                         ],
@@ -58,14 +58,14 @@ class LoginView extends StatelessWidget {
                         child: Column(
                           children: [
                             IgnorePointer(
-                              ignoring: state.loginState == FormStatus.loading
+                              ignoring: state.formStatus == FormStatus.loading
                                   ? true
                                   : false,
                               child: NumericPad(
                                 selectedValue: (selectedValue) => context
                                     .read<LoginBloc>()
                                     .add(LoginEventPinCodeChanged(
-                                        pinCode: selectedValue.toString())),
+                                        pinCode: selectedValue)),
                               ),
                             ),
                             const Spacer(),

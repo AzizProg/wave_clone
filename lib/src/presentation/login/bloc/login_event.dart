@@ -1,7 +1,7 @@
 sealed class LoginEvent {}
 
 class LoginEventPinCodeChanged extends LoginEvent {
-  final String pinCode;
+  final int pinCode;
   LoginEventPinCodeChanged({required this.pinCode});
 }
 
