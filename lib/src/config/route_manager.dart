@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wave_clone/src/core/constants/route_names.dart';
 import 'package:wave_clone/src/domain/entity/transaction_entity.dart';
 import 'package:wave_clone/src/presentation/home/home.dart';
 import 'package:wave_clone/src/presentation/login/login.dart';
+import 'package:wave_clone/src/presentation/settings/view/settings_page.dart';
 import 'package:wave_clone/src/presentation/transaction_info/view/transaction_info_page.dart';
 
 class RouteManager {
@@ -13,9 +13,10 @@ class RouteManager {
         return _pageWithoutAnimation(page: const LoginPage());
       case RoutesNames.home:
         return _page(page: const HomePage());
+      case RoutesNames.settings:
+        return _pageWithoutAnimation(page: const SettingsPage());
       case RoutesNames.transationInfo:
         var transaction = settings.arguments;
-        print(transaction.toString());
         return _pageWithoutAnimation(
             page: TransactionInfoPage(
           transaction: transaction as TransactionEntity,

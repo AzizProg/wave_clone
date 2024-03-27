@@ -3,7 +3,6 @@ import 'package:wave_clone/src/domain/entity/transaction_entity.dart';
 
 import 'package:wave_clone/src/presentation/transaction_info/view/transaction_info_view.dart';
 
-import '../../home/home.dart';
 
 class TransactionInfoPage extends StatelessWidget {
   final TransactionEntity transaction;

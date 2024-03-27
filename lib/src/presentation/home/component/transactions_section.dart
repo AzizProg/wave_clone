@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wave_clone/src/core/enums/transaction_type.dart';
-import 'package:wave_clone/src/core/helpers/color_helper.dart';
 import 'package:wave_clone/src/domain/entity/transaction_entity.dart';
 import 'package:wave_clone/src/presentation/home/bloc/home_state.dart';
-import 'package:wave_clone/src/presentation/home/component/_transaction_amount_switch.dart';
 
 import '../../../core/constants/route_names.dart';
 import '../bloc/home_bloc.dart';
 import '_transaction_tile.dart';
-import '_transaction_title_switch.dart';
 
 class TransactionSection extends StatelessWidget {
   const TransactionSection({super.key});

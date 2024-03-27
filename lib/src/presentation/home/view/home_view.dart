@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wave_clone/src/core/constants/route_names.dart';
 import 'package:wave_clone/src/core/helpers/color_helper.dart';
 import 'package:wave_clone/src/core/helpers/size_helper.dart';
 import 'package:wave_clone/src/presentation/home/bloc/home_bloc.dart';
@@ -11,7 +9,6 @@ import 'package:wave_clone/src/presentation/home/component/home_action_buttons.d
 import 'package:wave_clone/src/presentation/home/component/custom_sliver_app_bar.dart';
 import 'package:wave_clone/src/presentation/home/component/transactions_section.dart';
 import 'package:wave_clone/src/presentation/home/component/wave_card.dart';
-import 'package:wave_clone/src/presentation/transaction_info/view/transaction_info_page.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -45,7 +42,8 @@ class HomeView extends StatelessWidget {
                           padding: EdgeInsets.only(top: SizesHelper.height(40)),
                           width: double.infinity,
                           decoration: _boxDecoration(),
-                          child: Column(children: [
+                          child: Column(
+                          children: [
                             //list of Buttons
                             const HomeActionButtons(),
 
@@ -55,7 +53,7 @@ class HomeView extends StatelessWidget {
                             ),
 
                             //Show transactions list under Actions Buttons
-                            Expanded(
+                            const Expanded(
                                 child: TransactionSection()),
                           ]),
                         ),

@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 enum FormStatus { initial, loading, failed, success }
 
 class LoginState extends Equatable {
+
   String pinCode;
   final FormStatus formStatus;
   LoginState({this.pinCode = "", this.formStatus = FormStatus.initial});

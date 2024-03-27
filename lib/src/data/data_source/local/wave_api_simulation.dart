@@ -1,6 +1,6 @@
-import 'package:uuid/data.dart';
+
 import 'package:uuid/uuid.dart';
-import 'package:uuid/rng.dart';
+
 import 'package:wave_clone/src/core/enums/transaction_status_enums.dart';
 import 'package:wave_clone/src/core/enums/transaction_type.dart';
 import 'package:wave_clone/src/data/data_source/local/data_local.dart';

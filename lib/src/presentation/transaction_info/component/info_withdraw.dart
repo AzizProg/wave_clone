@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:wave_clone/src/domain/entity/transaction_entity.dart';
 
 import '../../../core/helpers/asset_helper.dart';
 import '../../../core/helpers/size_helper.dart';
-import '../../home/component/_transaction_title_switch.dart';
 import '_widget_spacer.dart';
 
 class InfoWithdraw extends StatelessWidget {

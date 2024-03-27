@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_clone/src/core/helpers/color_helper.dart';
 import 'package:wave_clone/src/presentation/login/bloc/login_bloc.dart';
-import 'package:wave_clone/src/presentation/login/bloc/login_event.dart';
 import 'package:wave_clone/src/presentation/login/bloc/login_state.dart';
 
 class ForgetPasswordButton extends StatelessWidget {

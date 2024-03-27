@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wave_clone/src/core/constants/route_names.dart';
 import 'package:wave_clone/src/presentation/home/bloc/home_bloc.dart';
 import 'package:wave_clone/src/presentation/home/bloc/home_event.dart';
 import 'package:wave_clone/src/presentation/home/bloc/home_state.dart';
@@ -84,11 +85,15 @@ class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
                 ),
               ),
             ),
-            const Align(
+             Align(
               alignment: Alignment.topLeft,
-              child: Icon(
-                Icons.settings,
-                color: Colors.white,
+              child: InkWell(
+                overlayColor: const MaterialStatePropertyAll(Colors.transparent),
+                onTap: ()=>Navigator.of(context).pushNamed(RoutesNames.settings),
+                child: const Icon(
+                  Icons.settings,
+                  color: Colors.white,
+                ),
               ),
             )
           ],

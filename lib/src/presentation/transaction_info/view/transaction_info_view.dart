@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wave_clone/src/core/helpers/asset_helper.dart';
 import 'package:wave_clone/src/core/helpers/size_helper.dart';
-import 'package:wave_clone/src/presentation/home/component/_transaction_title_switch.dart';
 import 'package:wave_clone/src/presentation/transaction_info/component/_view_switcher.dart';
 
 import '../../../domain/entity/transaction_entity.dart';

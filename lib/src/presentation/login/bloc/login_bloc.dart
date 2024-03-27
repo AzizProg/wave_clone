@@ -4,6 +4,7 @@ import 'package:wave_clone/src/presentation/login/bloc/login_state.dart';
 import 'package:wave_clone/src/presentation/login/view/login_form.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
+  late StringBuffer _buffer;
   LoginBloc({StringBuffer? buffer})
       : _buffer = buffer ?? StringBuffer(''),
         super(LoginState()) {
@@ -12,7 +13,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   ///[StringBuffer] is better if we can to iterate String modification
-  late StringBuffer _buffer;
+
 
   ///verify if pinCode received is inferior to zero ,
   ///verify if [_buffer] is not empty  and emit the [_buffer] as [LoginState] to [LoginView] screen.
