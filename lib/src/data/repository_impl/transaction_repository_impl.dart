@@ -9,7 +9,7 @@ class TransactionRepositoryImpl extends TransactionRepository{
   final WaveApiSimulation _waveApi;
   @override
   Future<List<TransactionEntity>> getAllTransaction() {
-  return Future.delayed(const Duration(seconds: 2),()=> _waveApi.getTransaction());
+  return Future.delayed(const Duration(seconds: 3),()=> _waveApi.getTransaction());
 
   }
 

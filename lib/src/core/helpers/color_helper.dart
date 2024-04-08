@@ -10,4 +10,5 @@ class ColorsHelper{
   static Color actionButtonPayment()=> const Color.fromRGBO(254, 248, 241, 1);
 
   static Color actionButtonBank()=> const Color.fromRGBO(253, 240, 240, 1);
+  static Color get backgroundColor => const Color(0xFFf1f1f1);
 }

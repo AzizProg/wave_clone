@@ -3,6 +3,7 @@ import 'package:wave_clone/src/core/constants/route_names.dart';
 import 'package:wave_clone/src/domain/entity/transaction_entity.dart';
 import 'package:wave_clone/src/presentation/home/home.dart';
 import 'package:wave_clone/src/presentation/login/login.dart';
+import 'package:wave_clone/src/presentation/search/view/search_page.dart';
 import 'package:wave_clone/src/presentation/settings/view/settings_page.dart';
 import 'package:wave_clone/src/presentation/transaction_info/view/transaction_info_page.dart';
 
@@ -15,6 +16,8 @@ class RouteManager {
         return _page(page: const HomePage());
       case RoutesNames.settings:
         return _pageWithoutAnimation(page: const SettingsPage());
+      case RoutesNames.search:
+        return _pageWithoutAnimation(page:  const SearchPage());
       case RoutesNames.transationInfo:
         var transaction = settings.arguments;
         return _pageWithoutAnimation(

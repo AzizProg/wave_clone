@@ -20,4 +20,9 @@ class AssetsHelper{
 
   //transaction_info
   static String depositIcon="assets/transaction_info/deposit_icon.png";
+
+  //notifications
+  static String canal="assets/notifications/logo_canal.png";
+  static String bonusCie="assets/notifications/bonus_cie.png";
+
 }

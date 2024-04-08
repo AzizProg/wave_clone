@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wave_clone/src/core/extension/size_extension.dart';
 
 import '../../../core/helpers/asset_helper.dart';
 import '../../../core/helpers/size_helper.dart';
@@ -8,39 +9,42 @@ class WaveCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
-        height: SizesHelper.height(140),
-        width: double.infinity,
-        margin: EdgeInsets.symmetric(horizontal: SizesHelper.width(50)),
+        height: context.getHeight(140),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(SizesHelper.width(15)),
+            borderRadius: BorderRadius.circular(context.getHeight(15)),
             image: DecorationImage(
-              isAntiAlias: true,
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
               image: AssetImage(
                 AssetsHelper.basicCard,
               ),
             )),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.asset(
-              AssetsHelper.qrCodeWithOutBg,
-              width: SizesHelper.height(110),
-            ),
-            Row(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: FittedBox(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(Icons.camera_alt, size: SizesHelper.width(15)),
-                SizedBox(
-                  width: SizesHelper.width(5),
+                Image.asset(
+                  AssetsHelper.qrCodeWithOutBg,
+                  fit: BoxFit.fill,
+                  width: context.getWidth(120),
                 ),
-                const Text("Scanner")
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.camera_alt, size: SizesHelper.width(15)),
+                    SizedBox(
+                      width: SizesHelper.width(5),
+                    ),
+                    const Text("Scanner")
+                  ],
+                ),
               ],
             ),
-          ],
+          ),
         ));
   }
 }

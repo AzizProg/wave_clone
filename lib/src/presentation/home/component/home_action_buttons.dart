@@ -8,25 +8,22 @@ class HomeActionButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: SizesHelper.height(10)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _actionButton(
-              color: ColorsHelper.actionButtonTransfer(),
-              asset: AssetsHelper.transferToPerson,
-              subtitle: "Transfert"),
-          _actionButton(
-              color: ColorsHelper.actionButtonPayment(),
-              asset: AssetsHelper.payBill,
-              subtitle: "Payments"),
-          _actionButton(
-              color: ColorsHelper.actionButtonBank(),
-              asset: AssetsHelper.bankSymbol,
-              subtitle: "Banque"),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _actionButton(
+            color: ColorsHelper.actionButtonTransfer(),
+            asset: AssetsHelper.transferToPerson,
+            subtitle: "Transfert"),
+        _actionButton(
+            color: ColorsHelper.actionButtonPayment(),
+            asset: AssetsHelper.payBill,
+            subtitle: "Payments"),
+        _actionButton(
+            color: ColorsHelper.actionButtonBank(),
+            asset: AssetsHelper.bankSymbol,
+            subtitle: "Banque"),
+      ],
     );
   }
 
@@ -44,18 +41,6 @@ class HomeActionButtons extends StatelessWidget {
             width: SizesHelper.width(40),
           )),
         ),
-        // Container(
-        //   width: 40,
-        //   padding: EdgeInsets.all(5),
-        //
-        //   decoration: BoxDecoration(
-        //     color: color,
-        //     shape: BoxShape.circle
-        //   ),
-        //   child: ClipOval(
-        //     child: Image.asset(asset),
-        //   ),
-        // ),
         Text(subtitle)
       ],
     );

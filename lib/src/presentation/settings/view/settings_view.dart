@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wave_clone/src/core/extension/size_extension.dart';
 import 'package:wave_clone/src/core/helpers/asset_helper.dart';
 import 'package:wave_clone/src/core/helpers/color_helper.dart';
 import 'package:wave_clone/src/core/helpers/size_helper.dart';
@@ -8,33 +9,37 @@ class SettingsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.sizeOf(context);
     return Scaffold(
-      backgroundColor: ColorsHelper.primaryColor(),
-      bottomNavigationBar: Container(
-        color: Colors.white,
-        padding: const EdgeInsets.symmetric(horizontal: 100),
-        child: ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-              backgroundColor: ColorsHelper.primaryColor()),
-          child: const Text("Décconexion"),
-        ),
-      ),
+      backgroundColor: ColorsHelper.backgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: ColorsHelper.backgroundColor,
         elevation: 0,
-        toolbarHeight:
-            SizesHelper.getHeight(screenHeight: size.height, heightWished: 80),
+        toolbarHeight: context.getHeight(80),
         centerTitle: true,
-        title: const Text("Profil"),
+        leading: InkWell(
+          overlayColor:
+              MaterialStateColor.resolveWith((states) => Colors.transparent),
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+          child: const Icon(
+            Icons.arrow_back_outlined,
+            color: Colors.black,
+          ),
+        ),
+        title: Text(
+          "Profil",
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge
+              ?.copyWith(color: Colors.black),
+        ),
       ),
       body: Container(
           width: double.infinity,
           height: double.infinity,
-          padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           decoration: const BoxDecoration(
-              color: Colors.white,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(25), topRight: Radius.circular(25))),
           child: Column(
@@ -45,8 +50,7 @@ class SettingsView extends StatelessWidget {
                   //Card profil
                   Container(
                     width: double.infinity,
-                    height: SizesHelper.getHeight(
-                        screenHeight: size.height, heightWished: 180),
+                    height: context.getHeight(160),
                     padding: const EdgeInsets.symmetric(
                         vertical: 15, horizontal: 15),
                     decoration: BoxDecoration(
@@ -108,7 +112,7 @@ class SettingsView extends StatelessWidget {
                               Expanded(
                                   child: Center(
                                 child: Text(
-                                  "About Me",
+                                  "Learn",
                                   style: _style(context),
                                 ),
                               )),
@@ -118,7 +122,7 @@ class SettingsView extends StatelessWidget {
                               ),
                               Expanded(
                                   child: Center(
-                                      child: Text("My networks",
+                                      child: Text("Improve",
                                           style: _style(context)))),
                               VerticalDivider(
                                 color:
@@ -126,7 +130,7 @@ class SettingsView extends StatelessWidget {
                               ),
                               Expanded(
                                   child: Center(
-                                      child: Text("Disclaimer",
+                                      child: Text("Contribute",
                                           style: _style(context)))),
                             ],
                           ),
@@ -163,6 +167,12 @@ class SettingsView extends StatelessWidget {
                     ),
                   )
                 ],
+              ),
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 20),
+                width: double.infinity,
+                height: context.getHeight(100),
+                decoration: const BoxDecoration(color: Colors.white),
               ),
             ],
           )),

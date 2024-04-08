@@ -5,7 +5,7 @@ import 'package:wave_clone/src/app/app.dart';
 void main()  {
   Bloc.observer=AppObserver();
   runApp(
-     const MyApp(), // Wrap your app
+     const MyApp(),
   );
 }
 
