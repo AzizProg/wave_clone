@@ -23,6 +23,7 @@ class HomeView extends StatelessWidget {
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(
         statusBarColor: ColorsHelper.primaryColor(),
+        statusBarIconBrightness: Brightness.light
       ),
       child: Scaffold(
         // backgroundColor: ColorsHelper.primaryColor(),

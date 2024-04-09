@@ -44,6 +44,8 @@ dependencies:
   intl: ^0.19.0
   shared_preferences: ^2.2.2
   shimmer: ^3.0.0
+  lottie: ^2.7.0
+  font_awesome_flutter: ^10.7.0
 
 dev_dependencies:
   flutter_test:
@@ -74,7 +76,7 @@ flutter:
      - assets/home/
      - assets/transaction_info/
      - assets/notifications/
-     #- assets/logo/
+     - assets/setting/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -25,4 +25,6 @@ class AssetsHelper{
   static String canal="assets/notifications/logo_canal.png";
   static String bonusCie="assets/notifications/bonus_cie.png";
 
+  //setting
+  static String disclaimer="assets/setting/disclaimer.json";
 }
