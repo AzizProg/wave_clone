@@ -24,7 +24,8 @@ class Disclaimer extends StatelessWidget {
             width: double.infinity,
             child: Column(
               children: [
-                FittedBox(child: Lottie.asset(AssetsHelper.disclaimer, width: context.getWidth(80))),
+                Lottie.asset(AssetsHelper.disclaimer,
+                    width: context.getWidth(80)),
                 Text(
                   "Cette application n'est qu'une reproduction (Clone) des fins éducatifs de la vrai version disponible sur les stores de télechargements.",
                   style: Theme.of(context).textTheme.bodyMedium,

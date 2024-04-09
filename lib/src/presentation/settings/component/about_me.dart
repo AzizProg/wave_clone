@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:wave_clone/src/core/extension/size_extension.dart';
 
 class AboutMe extends StatelessWidget {
   const AboutMe({super.key});

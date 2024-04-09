@@ -19,7 +19,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(state.copyWith(transactionStatus: TransactionStatus.loading));
     try {
       final transactions = await _repositoryImpl.getAllTransaction();
-      print(transactions.length);
      emit(state.copyWith(transactionStatus: TransactionStatus.success,transactions: transactions));
     } catch (e) {
       emit(state.copyWith(transactionStatus: TransactionStatus.failed));

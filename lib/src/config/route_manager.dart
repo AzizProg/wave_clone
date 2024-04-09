@@ -17,10 +17,11 @@ class RouteManager {
       case RoutesNames.settings:
         return _pageWithoutAnimation(page: const SettingsPage());
       case RoutesNames.search:
-        return _pageWithoutAnimation(page:  const SearchPage());
+        return _page(page:  const SearchPage());
+
       case RoutesNames.transationInfo:
         var transaction = settings.arguments;
-        return _pageWithoutAnimation(
+        return _page(
             page: TransactionInfoPage(
           transaction: transaction as TransactionEntity,
         ));

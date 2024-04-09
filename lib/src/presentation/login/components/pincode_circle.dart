@@ -32,7 +32,7 @@ class PinCodeCircle extends StatelessWidget {
             : ColorsHelper.secondaryColor(),
         shape: BoxShape.circle,
       ),
-      duration: const Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 400),
     );
   }
 }

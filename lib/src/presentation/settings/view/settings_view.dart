@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:wave_clone/src/core/extension/size_extension.dart';
-import 'package:wave_clone/src/core/helpers/asset_helper.dart';
 import 'package:wave_clone/src/core/helpers/color_helper.dart';
-import 'package:wave_clone/src/core/helpers/size_helper.dart';
 import 'package:wave_clone/src/presentation/settings/component/about_me.dart';
 import 'package:wave_clone/src/presentation/settings/component/disclaimer.dart';
 import 'package:wave_clone/src/presentation/settings/component/my_networks.dart';

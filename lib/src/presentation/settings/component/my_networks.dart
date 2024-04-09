@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wave_clone/src/core/helpers/color_helper.dart';
@@ -31,10 +30,11 @@ class MyNetworks extends StatelessWidget {
   }
 
   Widget _icon({required IconData icon}) {
-    return Card(
+    var iconContainer = Card(
       child: InkWell(
         onTap: () {
-          print("object");
+        },
+        onTapDown: (details) {
         },
         splashFactory: InkRipple.splashFactory,
         overlayColor: MaterialStateColor.resolveWith(
@@ -45,10 +45,12 @@ class MyNetworks extends StatelessWidget {
             width: double.infinity,
             child: FaIcon(
               icon,
-              color: ColorsHelper.secondaryColor(),
               size: 50,
+              color: ColorsHelper.secondaryColor(),
             )),
       ),
     );
+
+    return iconContainer;
   }
 }

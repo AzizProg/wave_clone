@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wave_clone/src/core/helpers/color_helper.dart';
 import 'package:wave_clone/src/domain/entity/transaction_entity.dart';
 import 'package:wave_clone/src/presentation/home/bloc/home_state.dart';
 import 'package:wave_clone/src/presentation/home/component/transaction_loader.dart';

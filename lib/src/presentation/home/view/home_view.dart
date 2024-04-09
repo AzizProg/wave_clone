@@ -3,8 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_clone/src/core/extension/size_extension.dart';
 import 'package:wave_clone/src/core/helpers/color_helper.dart';
-import 'package:wave_clone/src/core/helpers/size_helper.dart';
-import 'package:wave_clone/src/domain/entity/transaction_entity.dart';
 import 'package:wave_clone/src/presentation/home/bloc/home_bloc.dart';
 import 'package:wave_clone/src/presentation/home/bloc/home_state.dart';
 import 'package:wave_clone/src/presentation/home/component/home_action_buttons.dart';
@@ -12,8 +10,6 @@ import 'package:wave_clone/src/presentation/home/component/custom_sliver_app_bar
 import 'package:wave_clone/src/presentation/home/component/notification_container.dart';
 import 'package:wave_clone/src/presentation/home/component/transactions_section.dart';
 import 'package:wave_clone/src/presentation/home/component/wave_card.dart';
-
-import '../component/transaction_tile.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

@@ -4,7 +4,7 @@ class AssetsHelper{
   static String waveLoog="assets/wave_logo.png";
 
   //bank assets
-  static String searchLogo="assets/search_logo.png";
+  static String searchLogo="assets/bank/search_loop.png";
   static String ubaLogo="assets/uba_logo.png";
 
   //home assets

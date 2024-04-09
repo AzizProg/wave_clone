@@ -8,7 +8,7 @@ import '../../../core/helpers/size_helper.dart';
 class NumericPad extends StatelessWidget {
   final Function(int) selectedValue;
 
-   NumericPad({Key? key, required this.selectedValue}) : super(key: key);
+   const NumericPad({Key? key, required this.selectedValue}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

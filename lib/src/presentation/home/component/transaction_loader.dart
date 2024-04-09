@@ -45,7 +45,7 @@ class TransactionLoader extends StatelessWidget {
         decoration: BoxDecoration(
             color: Colors.grey.shade400,
             borderRadius: BorderRadius.circular(10)),
-        margin: EdgeInsets.symmetric(vertical: 5),
+        margin: const EdgeInsets.symmetric(vertical: 5),
         width: context.getWidth(width ?? 0),
         height: context.getHeight(height),
       ),
