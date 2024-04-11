@@ -3,6 +3,8 @@ import 'package:wave_clone/src/data/repository_impl/transaction_repository_impl.
 import 'package:wave_clone/src/presentation/search/bloc/search_event.dart';
 import 'package:wave_clone/src/presentation/search/bloc/search_state.dart';
 
+import '../../../domain/entity/transaction_entity.dart';
+
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc({required TransactionRepositoryImpl transaction})
       : _transactions = transaction,
@@ -13,33 +15,55 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   }
 
   late final TransactionRepositoryImpl _transactions;
+  static List<TransactionEntity> _transfers = [];
 
   void _getTransfers(GetTransfers event, Emitter<SearchState> emit) async {
-    emit(state.copyWith(status: SearchPageStatus.loading));
-    try {
-      final transfers = await _transactions.getAllTransaction();
+    if (state.status == SearchPageStatus.success &&
+        state.transfers!.isNotEmpty) {
       emit(state.copyWith(
-          transfers: transfers, status: SearchPageStatus.success));
-    } catch (e) {}
+        status: SearchPageStatus.success,
+        type: TransactionType.transfers,
+        transfers: _transfers,
+      ));
+    } else {
+      emit(state.copyWith(
+          status: SearchPageStatus.loading, type: TransactionType.transfers));
+
+      try {
+        _transfers = await _transactions.getAllTransaction();
+
+        emit(state.copyWith(
+            transfers: _transfers,
+            status: SearchPageStatus.success,
+            type: TransactionType.transfers));
+      } catch (e) {}
+    }
   }
 
-  void _getInvoices(GetInvoices event, Emitter<SearchState> emit) {}
   void _getTransferByName(
       GetTransferByName event, Emitter<SearchState> emit) async {
     try {
-      var transfers = await _transactions.getAllTransaction();
-
-      emit(state.copyWith(status: SearchPageStatus.loading));
-      var transfersByName = transfers
-          .where((element) => (element.senderName
+      if (event.name.isEmpty) {
+        emit(state.copyWith(
+            transfers: _transfers, status: SearchPageStatus.success));
+      } else {
+        emit(state.copyWith(status: SearchPageStatus.loading));
+        var transfersByName = _transfers.where((element) {
+          return (element.senderName
                   .toLowerCase()
                   .contains(event.name.toLowerCase()) ||
-              element.receiverName.contains(event.name.toLowerCase())))
-          .toList();
-      print(transfersByName.length);
+              element.receiverName.contains(event.name.toLowerCase()));
+        }).toList();
 
-      emit(state.copyWith(
-          transfers: transfersByName, status: SearchPageStatus.success));
+        transfersByName = transfersByName.toSet().toList();
+        emit(state.copyWith(
+            transfers: transfersByName, status: SearchPageStatus.success));
+      }
     } catch (e) {}
+  }
+
+  void _getInvoices(GetInvoices event, Emitter<SearchState> emit) {
+    emit(state.copyWith(
+        type: TransactionType.invoices, status: SearchPageStatus.success));
   }
 }

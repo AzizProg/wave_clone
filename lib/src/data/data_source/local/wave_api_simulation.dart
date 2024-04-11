@@ -1,4 +1,3 @@
-
 import 'package:uuid/uuid.dart';
 
 import 'package:wave_clone/src/core/enums/transaction_status_enums.dart';
@@ -133,7 +132,7 @@ class WaveApiSimulation extends DataLocal {
           id: const Uuid().v4(),
           balance: 51200,
           amount: 5000,
-          senderName: "Lavigne",
+          senderName: "Dorgeles",
           senderPhoneNumber: "07 47 31 20 60",
           receiverName: "",
           agentName: "",
@@ -161,7 +160,7 @@ class WaveApiSimulation extends DataLocal {
           amount: 1010,
           senderName: "Me",
           senderPhoneNumber: "",
-          receiverName: "Kindo",
+          receiverName: "Josephine",
           receiverPhoneNumber: "07 84 21 14 98",
           agentName: "",
           date: "1 mars 2024 à 13:40",
@@ -174,7 +173,7 @@ class WaveApiSimulation extends DataLocal {
           amount: 20200,
           senderName: "Me",
           senderPhoneNumber: "",
-          receiverName: "Christian",
+          receiverName: "Mohamed",
           receiverPhoneNumber: "05 78 23 00 22",
           agentName: "",
           date: "1 mars 2024 à 13:39",

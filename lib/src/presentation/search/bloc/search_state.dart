@@ -2,22 +2,33 @@ import 'package:equatable/equatable.dart';
 
 import '../../../domain/entity/transaction_entity.dart';
 
-enum SearchPageStatus { initial, loading, failed, success }
+enum SearchPageStatus { loading, failed, success }
+
+enum TransactionType {
+  transfers,
+  invoices,
+}
 
 class SearchState extends Equatable {
   final SearchPageStatus status;
+  final TransactionType type;
   final List<TransactionEntity>? transfers;
-  const SearchState({this.transfers, this.status = SearchPageStatus.initial});
+  const SearchState(
+      {this.transfers,
+      this.type = TransactionType.transfers,
+      this.status = SearchPageStatus.loading});
 
   SearchState copyWith(
-      {SearchPageStatus? status, List<TransactionEntity>? transfers}) {
+      {SearchPageStatus? status,
+      TransactionType? type,
+      List<TransactionEntity>? transfers}) {
     return SearchState(
       transfers: transfers ?? this.transfers,
+      type: type ?? this.type,
       status: status ?? this.status,
     );
   }
 
   @override
-  // TODO: implement props
-  List<Object?> get props => [status, transfers];
+  List<Object?> get props => [status,type, transfers];
 }

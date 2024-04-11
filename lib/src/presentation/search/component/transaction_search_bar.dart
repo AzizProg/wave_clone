@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_clone/src/core/extension/size_extension.dart';
@@ -14,21 +15,22 @@ class TransactionSearchBar extends StatelessWidget {
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (_, state) {
         return Container(
+          height: context.getHeight(35),
+          alignment: Alignment.center,
           padding: EdgeInsets.symmetric(horizontal: context.getWidth(10)),
           decoration: BoxDecoration(
-              color: Colors.grey.withOpacity(.4),
-              borderRadius: BorderRadius.circular(5)),
+              color: Colors.black12, borderRadius: BorderRadius.circular(5)),
           child: TextFormField(
             onChanged: (value) {
+
               context.read<SearchBloc>().add(GetTransferByName(name: value));
             },
-            enabled: (state.status == SearchPageStatus.success &&
-                    state.transfers!.isNotEmpty)
-                ? true
-                : false,
-            autofocus: true,
             decoration: const InputDecoration(
-                hintText: "Rechercher", border: InputBorder.none),
+                iconColor: Colors.black54,
+                icon: Icon(Icons.search),
+                hintStyle: TextStyle(color: Colors.black54),
+                hintText: "Rechercher",
+                border: InputBorder.none),
           ),
         );
       },
