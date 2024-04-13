@@ -1,10 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:wave_clone/src/core/constants/my_networks_link.dart';
 import 'package:wave_clone/src/core/helpers/color_helper.dart';
 
 class MyNetworks extends StatelessWidget {
-  const MyNetworks({super.key});
-
+  MyNetworks({super.key});
+  final List<Map<String, dynamic>> _networks = [
+    {
+      "icon": FontAwesomeIcons.github,
+      "link": MyNetWorksLink.github,
+    },
+    {
+      "icon": FontAwesomeIcons.linkedin,
+      "link": MyNetWorksLink.linkedin,
+    },
+    {
+      "icon": FontAwesomeIcons.envelope,
+      "link": MyNetWorksLink.mail,
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,23 +33,31 @@ class MyNetworks extends StatelessWidget {
               ?.copyWith(fontWeight: FontWeight.bold),
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(child: _icon(icon: FontAwesomeIcons.github)),
-            Expanded(child: _icon(icon: FontAwesomeIcons.linkedin)),
-            Expanded(child: _icon(icon: FontAwesomeIcons.envelope)),
-          ],
-        ),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+                _networks.length,
+                (index) => Expanded(
+                    child: _icon(
+                        icon: _networks[index]["icon"],
+                        link: _networks[index]["link"])))),
       ],
     );
   }
 
-  Widget _icon({required IconData icon}) {
+  Future<void> _launchURL(String url) async {
+    Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw Exception("Could not launch $uri");
+    }
+  }
+
+  Widget _icon({required IconData icon, required String link}) {
     var iconContainer = Card(
       child: InkWell(
         onTap: () {
-        },
-        onTapDown: (details) {
+          _launchURL(link);
         },
         splashFactory: InkRipple.splashFactory,
         overlayColor: MaterialStateColor.resolveWith(

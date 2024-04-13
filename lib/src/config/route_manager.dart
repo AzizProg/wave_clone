@@ -13,15 +13,15 @@ class RouteManager {
       case RoutesNames.login:
         return _pageWithoutAnimation(page: const LoginPage());
       case RoutesNames.home:
-        return _page(page: const HomePage());
+        return _pageDownToUp(page: const HomePage());
       case RoutesNames.settings:
-        return _pageWithoutAnimation(page: const SettingsPage());
+        return _pageLeftToRight(page: const SettingsPage());
       case RoutesNames.search:
-        return _page(page:  const SearchPage());
+        return _pageDownToUp(page:  const SearchPage());
 
       case RoutesNames.transationInfo:
         var transaction = settings.arguments;
-        return _page(
+        return _pageWithoutAnimation(
             page: TransactionInfoPage(
           transaction: transaction as TransactionEntity,
         ));
@@ -36,7 +36,7 @@ class RouteManager {
     );
   }
 
-  static PageRouteBuilder _page({required Widget page}) {
+  static PageRouteBuilder _pageDownToUp({required Widget page}) {
     return PageRouteBuilder(
         pageBuilder: (_, firstAnime, secondAnime) => page,
         transitionDuration: const Duration(milliseconds: 300),
@@ -46,6 +46,22 @@ class RouteManager {
           const curve = Curves.ease;
           var tween =
               Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          return SlideTransition(
+            position: firstAnimation.drive(tween),
+            child: child,
+          );
+        });
+  }
+  static PageRouteBuilder _pageLeftToRight({required Widget page}) {
+    return PageRouteBuilder(
+        pageBuilder: (_, firstAnime, secondAnime) => page,
+        transitionDuration: const Duration(milliseconds: 300),
+        transitionsBuilder: (_, firstAnimation, secondAnimation, child) {
+          const begin = Offset(-1, 0);
+          const end = Offset.zero;
+          const curve = Curves.ease;
+          var tween =
+          Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
           return SlideTransition(
             position: firstAnimation.drive(tween),
             child: child,

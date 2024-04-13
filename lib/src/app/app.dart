@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wave_clone/src/config/route_manager.dart';
 
 class MyApp extends StatelessWidget {
@@ -7,13 +6,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-        designSize: const Size(365, 680),
-        minTextAdapt: true,
-        splitScreenMode: true,
-
-        builder: (_, child) {
-          return MaterialApp(
+    return MaterialApp(
 
             onGenerateRoute: (settings) => RouteManager.onGenerateRoute(settings),
             title: 'Wave clone',
@@ -25,7 +18,7 @@ class MyApp extends StatelessWidget {
                   child: widget!);
             },
           );
-        });
+
   }
 }
 //

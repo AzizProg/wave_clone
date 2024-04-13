@@ -4,7 +4,6 @@ import 'package:wave_clone/src/core/extension/size_extension.dart';
 import 'package:wave_clone/src/domain/entity/transaction_entity.dart';
 
 import '../../../core/helpers/asset_helper.dart';
-import '../../../core/helpers/size_helper.dart';
 import '_widget_spacer.dart';
 
 class InfoDeposit extends StatelessWidget {

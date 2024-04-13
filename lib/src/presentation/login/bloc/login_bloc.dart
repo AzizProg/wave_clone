@@ -1,4 +1,5 @@
-import 'package:hydrated_bloc/hydrated_bloc.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_clone/src/presentation/login/bloc/login_event.dart';
 import 'package:wave_clone/src/presentation/login/bloc/login_state.dart';
 import 'package:wave_clone/src/presentation/login/view/login_form.dart';

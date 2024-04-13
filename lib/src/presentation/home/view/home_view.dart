@@ -1,7 +1,5 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_clone/src/core/extension/size_extension.dart';
 import 'package:wave_clone/src/core/helpers/color_helper.dart';
@@ -18,15 +16,13 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var topPadding = MediaQuery.paddingOf(context).top/4;
-    print(topPadding);
+    var topPadding = MediaQuery.paddingOf(context).top / 4;
     return Scaffold(
       appBar: AppBar(
-          elevation: 0,
-          toolbarHeight: topPadding,
-          backgroundColor: ColorsHelper.primaryColor,
-         ),
-
+        elevation: 0,
+        toolbarHeight: topPadding,
+        backgroundColor: ColorsHelper.primaryColor,
+      ),
       body: SafeArea(
         top: false,
         child: BlocBuilder<HomeBloc, HomeState>(

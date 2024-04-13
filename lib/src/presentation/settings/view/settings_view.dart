@@ -42,7 +42,7 @@ class SettingsView extends StatelessWidget {
                       SizedBox(
                         height: context.getHeight(20),
                       ),
-                      const MyNetworks()
+                       MyNetworks()
                     ],
                   ),
                 )

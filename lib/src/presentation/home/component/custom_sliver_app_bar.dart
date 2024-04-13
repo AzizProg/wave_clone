@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wave_clone/src/core/constants/route_names.dart';
 import 'package:wave_clone/src/core/extension/number_extension.dart';
 import 'package:wave_clone/src/core/extension/size_extension.dart';
@@ -10,7 +8,6 @@ import 'package:wave_clone/src/presentation/home/bloc/home_event.dart';
 import 'package:wave_clone/src/presentation/home/bloc/home_state.dart';
 
 import '../../../core/helpers/color_helper.dart';
-import '../../../core/helpers/size_helper.dart';
 
 class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
   final double balance;
@@ -25,7 +22,6 @@ class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    var topPadding=MediaQuery.viewPaddingOf(context).top;
     return BlocBuilder<HomeBloc, HomeState>(builder: (_, state) {
       return  Container(
         width: double.infinity,
@@ -61,7 +57,7 @@ class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
                             ? _hidder(context: context)
                             : RichText(
                                 text: TextSpan(
-                                    text: "${balance.formatPrice}",
+                                    text: balance.formatPrice,
                                     style: Theme.of(context)
                                         .textTheme
                                         .titleLarge
@@ -154,6 +150,6 @@ class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
 //Add a shadow under the appbar scrolling
   BoxShadow _getAppBarShadowInScroll() {
     return const BoxShadow(
-        color: Colors.black, blurStyle: BlurStyle.outer, blurRadius: 5);
+        color: Colors.black, blurStyle: BlurStyle.normal, blurRadius: 10);
   }
 }

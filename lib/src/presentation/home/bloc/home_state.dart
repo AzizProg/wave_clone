@@ -11,7 +11,7 @@ class HomeState extends Equatable {
   final TransactionStatus transactionStatus;
   List<TransactionEntity>? transactions;
   HomeState(
-      {this.balanceStatus = BalanceStatus.displayed,
+      {this.balanceStatus = BalanceStatus.hidden,
       this.transactionStatus = TransactionStatus.initial,
       this.transactions});
   @override

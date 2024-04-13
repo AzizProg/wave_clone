@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:wave_clone/src/core/extension/size_extension.dart';
 
 import '../../../core/helpers/asset_helper.dart';
-import '../../../core/helpers/size_helper.dart';
 
 class WaveCard extends StatelessWidget {
   const WaveCard({super.key});

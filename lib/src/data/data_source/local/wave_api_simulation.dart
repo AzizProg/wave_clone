@@ -22,19 +22,7 @@ class WaveApiSimulation extends DataLocal {
           fee: 50,
           type: TransactionType.deposit,
           status: TransactionStatusEnums.success),
-      TransactionModel(
-          id: const Uuid().v4(),
-          balance: 31200,
-          amount: 5000,
-          senderName: "Kevin",
-          senderPhoneNumber: "07 47 31 20 60",
-          receiverName: "",
-          agentName: "",
-          receiverPhoneNumber: "",
-          date: "20 mars 2024 à 12:52",
-          fee: 50,
-          type: TransactionType.deposit,
-          status: TransactionStatusEnums.success),
+
 
       TransactionModel(
           id: const Uuid().v4(),
@@ -183,16 +171,16 @@ class WaveApiSimulation extends DataLocal {
           status: TransactionStatusEnums.success),
       TransactionModel(
           id: const Uuid().v4(),
-          balance: 51200,
-          amount: 4500,
-          senderName: "",
-          senderPhoneNumber: "",
-          receiverName: "Me",
+          balance: 31200,
+          amount: 5000,
+          senderName: "Kevin",
+          senderPhoneNumber: "07 47 31 20 60",
+          receiverName: "",
+          agentName: "",
           receiverPhoneNumber: "",
-          agentName: "WAVE CLONE\n(A098_CI)",
-          date: "1 mars 2024 à 13:52",
-          fee: 0,
-          type: TransactionType.withdraw,
+          date: "20 mars 2024 à 12:52",
+          fee: 50,
+          type: TransactionType.deposit,
           status: TransactionStatusEnums.success),
     ];
   }
