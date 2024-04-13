@@ -38,7 +38,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   void _onLoginEventPinCodeCompleted(
       LoginPinCodeCompleted event, Emitter<LoginState> emit) async {
     emit(state.copyWith(formStatus: FormStatus.loading));
-    await Future.delayed(const Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 2));
     emit(state.copyWith(formStatus: FormStatus.success));
   }
 

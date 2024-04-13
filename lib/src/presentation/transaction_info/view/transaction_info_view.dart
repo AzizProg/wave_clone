@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:wave_clone/src/core/helpers/size_helper.dart';
 import 'package:wave_clone/src/presentation/transaction_info/component/_view_switcher.dart';
 
@@ -22,6 +23,7 @@ class TransactionInfoView extends StatelessWidget {
               )),
           elevation: 0,
           centerTitle: true,
+          systemOverlayStyle: SystemUiOverlayStyle.dark,
           title: Text(
             "Reçu",
             style: Theme.of(context)
@@ -30,9 +32,11 @@ class TransactionInfoView extends StatelessWidget {
                 ?.copyWith(fontWeight: FontWeight.bold),
           ),
         ),
-        body: Padding(
-          padding: EdgeInsets.all(SizesHelper.radius(10)),
-          child: SingleChildScrollView(child: viewSwitcher(transaction)),
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: SingleChildScrollView(child: viewSwitcher(transaction)),
+          ),
         ));
   }
 }

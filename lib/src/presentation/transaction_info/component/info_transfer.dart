@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wave_clone/src/core/extension/number_extension.dart';
+import 'package:wave_clone/src/core/extension/size_extension.dart';
 import 'package:wave_clone/src/domain/entity/transaction_entity.dart';
 
 import '../../../core/helpers/asset_helper.dart';
@@ -16,11 +18,11 @@ class InfoTransfer extends StatelessWidget {
       children: [
         Image.asset(
           AssetsHelper.transferToPerson,
-          width: SizesHelper.width(50),
+          width: context.getWidth(50),
         ),
-        spaceBetweenWidget(spacerSize: 20),
+        spaceBetweenWidget(spacerSize: 20, context: context),
         Text(
-          "-${transaction.amount}F",
+          "-${transaction.amount.formatPrice}F",
           style: Theme.of(context)
               .textTheme
               .headlineSmall
@@ -30,7 +32,7 @@ class InfoTransfer extends StatelessWidget {
           "A ${transaction.receiverName} ${transaction.receiverPhoneNumber}",
           style: Theme.of(context).textTheme.bodyLarge,
         ),
-        spaceBetweenWidget(),
+        spaceBetweenWidget(context: context),
         Text(
           "Montant reçu",
           style: Theme.of(context)
@@ -42,7 +44,7 @@ class InfoTransfer extends StatelessWidget {
           "${transaction.amount}",
           style: Theme.of(context).textTheme.bodyLarge,
         ),
-        spaceBetweenWidget(),
+        spaceBetweenWidget(context: context),
         Text(
           "Frais",
           style: Theme.of(context)
@@ -54,7 +56,7 @@ class InfoTransfer extends StatelessWidget {
           "${(transaction.amount * 0.01).toInt()}F",
           style: Theme.of(context).textTheme.bodyLarge,
         ),
-        spaceBetweenWidget(),
+        spaceBetweenWidget(context: context),
         Text(
           "Status",
           style: Theme.of(context)
@@ -66,7 +68,7 @@ class InfoTransfer extends StatelessWidget {
           "Effectué",
           style: Theme.of(context).textTheme.bodyLarge,
         ),
-        spaceBetweenWidget(),
+        spaceBetweenWidget(context: context),
         Text(
           "Date et heure",
           style: Theme.of(context)
@@ -78,7 +80,7 @@ class InfoTransfer extends StatelessWidget {
           transaction.date,
           style: Theme.of(context).textTheme.bodyLarge,
         ),
-        spaceBetweenWidget(),
+        spaceBetweenWidget(context: context),
         Text(
           "Nouveau solde",
           style: Theme.of(context)
@@ -90,7 +92,7 @@ class InfoTransfer extends StatelessWidget {
           "${transaction.balance}F",
           style: Theme.of(context).textTheme.bodyLarge,
         ),
-        spaceBetweenWidget(),
+        spaceBetweenWidget(context: context),
         Text(
           "ID de la transaction",
           style: Theme.of(context)
@@ -102,7 +104,7 @@ class InfoTransfer extends StatelessWidget {
           transaction.id,
           style: Theme.of(context).textTheme.bodyLarge,
         ),
-        spaceBetweenWidget(spacerSize: 20),
+        spaceBetweenWidget(spacerSize: 20, context: context),
         Text(
           "En partenariat avec UBA",
           style: Theme.of(context)

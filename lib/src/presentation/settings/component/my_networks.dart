@@ -38,7 +38,7 @@ class MyNetworks extends StatelessWidget {
         },
         splashFactory: InkRipple.splashFactory,
         overlayColor: MaterialStateColor.resolveWith(
-            (states) => ColorsHelper.primaryColor()),
+            (states) => ColorsHelper.primaryColor),
         child: Container(
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
@@ -46,7 +46,7 @@ class MyNetworks extends StatelessWidget {
             child: FaIcon(
               icon,
               size: 50,
-              color: ColorsHelper.secondaryColor(),
+              color: ColorsHelper.secondaryColor,
             )),
       ),
     );

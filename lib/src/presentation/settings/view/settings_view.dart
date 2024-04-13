@@ -32,21 +32,18 @@ class SettingsView extends StatelessWidget {
                   height: context.getHeight(20),
                 ),
                 Expanded(
-                  child: SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    child: Column(
-                      children: [
-                        const AboutMe(),
-                        SizedBox(
-                          height: context.getHeight(20),
-                        ),
-                        const Disclaimer(),
-                        SizedBox(
-                          height: context.getHeight(20),
-                        ),
-                        const MyNetworks()
-                      ],
-                    ),
+                  child: ListView(
+                    children: [
+                      const AboutMe(),
+                      SizedBox(
+                        height: context.getHeight(20),
+                      ),
+                      const Disclaimer(),
+                      SizedBox(
+                        height: context.getHeight(20),
+                      ),
+                      const MyNetworks()
+                    ],
                   ),
                 )
               ],

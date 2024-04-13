@@ -13,50 +13,80 @@ Widget notificationTitle(
       color: Colors.white,
       borderRadius: BorderRadius.circular(5),
     ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
+    child: Stack(
       children: [
-        Image.asset(picture),
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium
-                    ?.copyWith(fontWeight: FontWeight.bold),
-              ),
-              Text(
-                description,
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-              Row(
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+                child: Image.asset(
+              picture,
+            )),
+            Expanded(
+              flex: 3,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Icon(
-                    Icons.play_arrow_rounded,
-                    color: Colors.grey,
+                  Text(
+                    title,
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium
+                        ?.copyWith(fontWeight: FontWeight.bold),
                   ),
-                  Expanded(
-                    child: Container(
-                      width: double.infinity,
-                      color: Colors.grey.withOpacity(.4),
-                      height: context.getHeight(2),
-                    ),
+                  SizedBox(
+                    height: context.getHeight(5),
+                  ),
+                  Text(
+                    description,
+                    textScaleFactor: 1,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.play_arrow_rounded,
+                        color: Colors.grey,
+                      ),
+                      Expanded(
+                        child: Container(
+                          width: double.infinity,
+                          color: Colors.grey.withOpacity(.4),
+                          height: context.getHeight(2),
+                        ),
+                      )
+                    ],
                   )
                 ],
-              )
-            ],
-          ),
+              ),
+            ),
+          ],
         ),
-        const Align(
-          alignment: Alignment.topRight,
-          child: Icon(Icons.cancel_outlined),
+        Positioned(
+          right: 0,
+          top: 0,
+          child: Icon(
+            Icons.cancel_outlined,
+            size: context.getWidth(20),
+          ),
         )
       ],
     ),
   );
 }
+//
+// Text.rich(
+// TextSpan(
+// text:"$title\n" ,
+// style: Theme.of(context)
+//     .textTheme
+//     .titleMedium
+//     ?.copyWith(fontWeight: FontWeight.bold),
+// children: [
+// TextSpan(
+// text: description,
+// style:  Theme.of(context).textTheme.bodyMedium,
+// )
+// ]
+// )
+// ),

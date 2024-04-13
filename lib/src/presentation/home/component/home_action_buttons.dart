@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wave_clone/src/core/extension/size_extension.dart';
 import 'package:wave_clone/src/core/helpers/asset_helper.dart';
 import 'package:wave_clone/src/core/helpers/color_helper.dart';
 import 'package:wave_clone/src/core/helpers/size_helper.dart';
@@ -12,33 +13,33 @@ class HomeActionButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         _actionButton(
-            color: ColorsHelper.actionButtonTransfer(),
+            color: ColorsHelper.actionButtonTransfer,
             asset: AssetsHelper.transferToPerson,
-            subtitle: "Transfert"),
+            subtitle: "Transfert",context: context),
         _actionButton(
-            color: ColorsHelper.actionButtonPayment(),
+            color: ColorsHelper.actionButtonPayment,
             asset: AssetsHelper.payBill,
-            subtitle: "Payments"),
+            subtitle: "Payments", context: context),
         _actionButton(
-            color: ColorsHelper.actionButtonBank(),
+            color: ColorsHelper.actionButtonBank,
             asset: AssetsHelper.bankSymbol,
-            subtitle: "Banque"),
+            subtitle: "Banque",context: context),
       ],
     );
   }
 
   Widget _actionButton(
-      {required Color color, required String asset, required subtitle}) {
+      {required Color color, required String asset, required subtitle,required BuildContext context}) {
     return Column(
       children: [
         CircleAvatar(
-          radius: SizesHelper.radius(25),
+          radius: 25,
           backgroundColor: color,
           // backgroundImage: AssetImage(asset),
           child: ClipOval(
               child: Image.asset(
             asset,
-            width: SizesHelper.width(40),
+            width: context.getWidth(40),
           )),
         ),
         Text(subtitle)

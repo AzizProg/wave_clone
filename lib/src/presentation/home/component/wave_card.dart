@@ -35,9 +35,9 @@ class WaveCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.camera_alt, size: SizesHelper.width(15)),
+                    Icon(Icons.camera_alt, size: context.getWidth(15)),
                     SizedBox(
-                      width: SizesHelper.width(5),
+                      width: context.getWidth(5),
                     ),
                     const Text("Scanner")
                   ],

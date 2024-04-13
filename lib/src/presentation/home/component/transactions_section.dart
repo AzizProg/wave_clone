@@ -50,7 +50,7 @@ class TransactionSection extends StatelessWidget {
                             transaction: transaction,
                           ));
                     }),
-                searchButton(
+                SearchButton(
                     onTap: () =>
                         Navigator.pushNamed(context, RoutesNames.search))
               ],

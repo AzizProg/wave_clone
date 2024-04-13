@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,56 +18,63 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion(
-      value: SystemUiOverlayStyle(
-        statusBarColor: ColorsHelper.primaryColor(),
-        statusBarIconBrightness: Brightness.light
-      ),
-      child: Scaffold(
-        // backgroundColor: ColorsHelper.primaryColor(),
-        body: SafeArea(
-          child: BlocBuilder<HomeBloc, HomeState>(
-            builder: (_, state) {
-              return CustomScrollView(slivers: [
-                SliverPersistentHeader(
-                    delegate: CustomSliverAppBar(
-                        balance: 50000, maxAppBarSize: 100, minAppBarSize: 50),
-                    pinned: true),
-                SliverToBoxAdapter(
-                  child: Container(
-                    //  margin: EdgeInsets.only(top: SizesHelper.height(100)),
-                    //padding: EdgeInsets.only(top: SizesHelper.height(40)),
-                    width: double.infinity,
-                    height: context.getHeight(250),
-                    decoration: _boxDecoration(),
-                    child: Stack(children: [
-                      Positioned.fill(
-                          child:
-                              ColoredBox(color: ColorsHelper.primaryColor())),
-                      //list of Buttons
-                      Positioned(
-                        child: Container(
-                            padding:
-                                EdgeInsets.only(top: context.getHeight(60)),
-                            margin:
-                                EdgeInsets.only(top: context.getHeight(100)),
-                            decoration: _boxDecoration(),
-                            child: const HomeActionButtons()),
-                      ),
+    var topPadding = MediaQuery.paddingOf(context).top/4;
+    print(topPadding);
+    return Scaffold(
+      appBar: AppBar(
+          elevation: 0,
+          toolbarHeight: topPadding,
+          backgroundColor: ColorsHelper.primaryColor,
+         ),
 
-                      const Positioned(left: 60, right: 60, child: WaveCard()),
-                    ]),
+      body: SafeArea(
+        top: false,
+        child: BlocBuilder<HomeBloc, HomeState>(
+          builder: (_, state) {
+            return CustomScrollView(
+                physics: const ClampingScrollPhysics(),
+                slivers: [
+                  SliverPersistentHeader(
+                      delegate: CustomSliverAppBar(
+                          balance: Random().nextDouble() * 50000,
+                          maxAppBarSize: 100,
+                          minAppBarSize: 50),
+                      pinned: true),
+                  SliverToBoxAdapter(
+                    child: Container(
+                      //  margin: EdgeInsets.only(top: SizesHelper.height(100)),
+                      //padding: EdgeInsets.only(top: SizesHelper.height(40)),
+                      width: double.infinity,
+                      height: context.getHeight(250),
+                      decoration: _boxDecoration(),
+                      child: Stack(children: [
+                        Positioned.fill(
+                            child:
+                                ColoredBox(color: ColorsHelper.primaryColor)),
+                        //list of Buttons
+                        Positioned(
+                          child: Container(
+                              padding:
+                                  EdgeInsets.only(top: context.getHeight(60)),
+                              margin:
+                                  EdgeInsets.only(top: context.getHeight(100)),
+                              decoration: _boxDecoration(),
+                              child: const HomeActionButtons()),
+                        ),
+
+                        const Positioned(
+                            left: 60, right: 60, child: WaveCard()),
+                      ]),
+                    ),
                   ),
-                ),
-                 SliverToBoxAdapter(
-                  child: NotificationContainer(),
-                ),
-                const SliverToBoxAdapter(
-                  child: TransactionSection(),
-                )
-              ]);
-            },
-          ),
+                  SliverToBoxAdapter(
+                    child: NotificationContainer(),
+                  ),
+                  const SliverToBoxAdapter(
+                    child: TransactionSection(),
+                  )
+                ]);
+          },
         ),
       ),
     );

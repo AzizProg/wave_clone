@@ -22,6 +22,6 @@ Widget transactionTitleSwitch(
   return Text(
     title,
     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-        color: ColorsHelper.primaryColor(), fontWeight: FontWeight.bold),
+        color: ColorsHelper.primaryColor, fontWeight: FontWeight.bold),
   );
 }

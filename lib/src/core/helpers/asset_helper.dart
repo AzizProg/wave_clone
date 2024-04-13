@@ -1,7 +1,11 @@
 
 class AssetsHelper{
   AssetsHelper._();
-  static String waveLoog="assets/wave_logo.png";
+
+  static String me="assets/me.png";
+
+  //logo asset
+  static String waveLoog="assets/logo/wave_logo.png";
 
   //bank assets
   static String searchLogo="assets/bank/search_loop.png";

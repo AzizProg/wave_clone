@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wave_clone/src/core/constants/route_names.dart';
+import 'package:wave_clone/src/core/extension/number_extension.dart';
+import 'package:wave_clone/src/core/extension/size_extension.dart';
 import 'package:wave_clone/src/core/helpers/asset_helper.dart';
 import 'package:wave_clone/src/core/helpers/size_helper.dart';
 import 'package:wave_clone/src/presentation/login/bloc/login_bloc.dart';
@@ -16,7 +19,9 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+
+    return AnnotatedRegion(
+      value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         body: BlocListener<LoginBloc, LoginState>(
           listener: (BuildContext context, state) {
@@ -25,56 +30,58 @@ class LoginView extends StatelessWidget {
                   context, RoutesNames.home, (route) => false);
             }
           },
-          child: BlocBuilder<LoginBloc, LoginState>(
-            builder: (BuildContext context, state) {
-              return Padding(
-                padding: EdgeInsets.all(SizesHelper.width(10)),
-                child: Column(
+          child: SafeArea(
+            child: BlocBuilder<LoginBloc, LoginState>(
+              builder: (BuildContext context, state) {
+                return Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
 
-                  children: [
-                    Expanded(
-                      flex: 2,
-                      child: Image.asset(
-                        AssetsHelper.waveLoog,
-                        width: SizesHelper.width(50),
-                      ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          PinCodeCircle(
-                            pinCode: state.pinCode.toString(),
-                          ),
-                          state.formStatus == FormStatus.loading
-                              ? const CircularProgressIndicator()
-                              : Container()
-                        ],
-                      ),
-                    ),
-                    Expanded(
+                    children: [
+                      Expanded(
                         flex: 2,
+                        child: Image.asset(
+                          AssetsHelper.waveLoog,
+                          width: context.getWidth(50),
+                        ),
+                      ),
+                      Expanded(
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            IgnorePointer(
-                              ignoring: state.formStatus == FormStatus.loading
-                                  ? true
-                                  : false,
-                              child: NumericPad(
-                                selectedValue: (selectedValue) => context
-                                    .read<LoginBloc>()
-                                    .add(LoginEventPinCodeChanged(
-                                        pinCode: selectedValue)),
-                              ),
+                            PinCodeCircle(
+                              pinCode: state.pinCode.toString(),
                             ),
-                            const Spacer(),
-                            ForgetPasswordButton(onTap: () => null),
+                            state.formStatus == FormStatus.loading
+                                ? const CircularProgressIndicator.adaptive()
+                                : Container()
                           ],
-                        ))
-                  ],
-                ),
-              );
-            },
+                        ),
+                      ),
+                      Expanded(
+                          flex: 2,
+                          child: Column(
+                            children: [
+                              IgnorePointer(
+                                ignoring: state.formStatus == FormStatus.loading
+                                    ? true
+                                    : false,
+                                child: NumericPad(
+                                  selectedValue: (selectedValue) => context
+                                      .read<LoginBloc>()
+                                      .add(LoginEventPinCodeChanged(
+                                          pinCode: selectedValue)),
+                                ),
+                              ),
+                              const Spacer(),
+                              ForgetPasswordButton(onTap: () => null),
+                            ],
+                          ))
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
         ),
       ),

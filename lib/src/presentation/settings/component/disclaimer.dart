@@ -27,7 +27,7 @@ class Disclaimer extends StatelessWidget {
                 Lottie.asset(AssetsHelper.disclaimer,
                     width: context.getWidth(80)),
                 Text(
-                  "Cette application n'est qu'une reproduction (Clone) des fins éducatifs de la vrai version disponible sur les stores de télechargements.",
+                  "Cette application n'est qu'une reproduction (clone) à des fins éducatives de la vraie version disponible sur les plateformes de téléchargement.",
                   style: Theme.of(context).textTheme.bodyMedium,
                   textAlign: TextAlign.center,
                 ),

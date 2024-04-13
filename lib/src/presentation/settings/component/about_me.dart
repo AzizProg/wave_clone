@@ -9,7 +9,7 @@ class AboutMe extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          " Wave Money",
+          " Wave",
           style: Theme.of(context)
               .textTheme
               .titleMedium
@@ -23,7 +23,7 @@ class AboutMe extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  "Wave Money est une plateforme de services financiers numériques opérant en Côte d'Ivoire et au Sénegal. Elle offre une gamme de services financiers accessibles via une application mobile disponible sur AppStore et PlayStore, permettant aux utilisateurs d'effectuer des transactions financières telles que les transferts d'argent et les paiements de factures.",
+                  "Wave est une plateforme de services financiers numériques opérant en Côte d'Ivoire et au Sénégal. Elle offre une gamme de services financiers accessibles via une application mobile disponible sur l'App Store et le Play Store, permettant aux utilisateurs d'effectuer des transactions financières telles que les transferts d'argent et les paiements de factures.",
                   style: Theme.of(context).textTheme.bodyMedium,
                 textAlign: TextAlign.center,
                 )

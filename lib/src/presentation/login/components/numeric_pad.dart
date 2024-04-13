@@ -48,18 +48,18 @@ class NumericPad extends StatelessWidget {
     return Expanded(
       child: InkWell(
         splashFactory: InkRipple.splashFactory,
-        splashColor: ColorsHelper.secondaryColor(),
+        splashColor: ColorsHelper.secondaryColor,
         customBorder: const StadiumBorder(),
         onTap: () {
           selectedValue(number);
         },
         child: Padding(
-          padding: EdgeInsets.all(SizesHelper.radius(10)),
+          padding: const EdgeInsets.all(10),
           child: Text(
             "$number",
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: SizesHelper.fontSize(22),
+            style: const TextStyle(
+              fontSize: 22,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -72,17 +72,17 @@ class NumericPad extends StatelessWidget {
     return Flexible(
       child: InkWell(
         splashFactory: InkRipple.splashFactory,
-        splashColor: ColorsHelper.secondaryColor(),
+        splashColor: ColorsHelper.secondaryColor,
         customBorder: const StadiumBorder(),
         onTap: () {
           selectedValue(-1);
         },
-        child: Padding(
-          padding: EdgeInsets.all(SizesHelper.radius(10)),
+        child: const Padding(
+          padding: EdgeInsets.all(10),
           child: Center(
             child: Icon(
               Icons.backspace,
-              size: SizesHelper.fontSize(22),
+              size: 22,
             ),
           ),
         ),

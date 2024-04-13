@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wave_clone/src/core/constants/route_names.dart';
+import 'package:wave_clone/src/core/extension/number_extension.dart';
+import 'package:wave_clone/src/core/extension/size_extension.dart';
 import 'package:wave_clone/src/presentation/home/bloc/home_bloc.dart';
 import 'package:wave_clone/src/presentation/home/bloc/home_event.dart';
 import 'package:wave_clone/src/presentation/home/bloc/home_state.dart';
@@ -22,13 +25,14 @@ class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
+    var topPadding=MediaQuery.viewPaddingOf(context).top;
     return BlocBuilder<HomeBloc, HomeState>(builder: (_, state) {
-      return Container(
+      return  Container(
         width: double.infinity,
         height: maxExtent,
-        padding: const EdgeInsets.all(10).r,
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-            color: ColorsHelper.primaryColor(),
+            color: ColorsHelper.primaryColor,
             boxShadow: shrinkOffset >= maxExtent
                 ? [
                     _getAppBarShadowInScroll(),
@@ -38,7 +42,7 @@ class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
           children: [
             AnimatedAlign(
               alignment: Alignment.bottomCenter,
-              //TODO make transformation scale for transition
+
               duration: const Duration(seconds: 1),
               child: Transform.scale(
                 scale: 1.5,
@@ -50,14 +54,14 @@ class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
                         : context.read<HomeBloc>().add(HomeEventShowBalance());
                   },
                   child: Row(
-                    mainAxisSize: MainAxisSize.min,
+                      mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         state.balanceStatus == BalanceStatus.hidden
-                            ? _hidder()
+                            ? _hidder(context: context)
                             : RichText(
                                 text: TextSpan(
-                                    text: "$balance",
+                                    text: "${balance.formatPrice}",
                                     style: Theme.of(context)
                                         .textTheme
                                         .titleLarge
@@ -75,7 +79,7 @@ class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
                                                 fontWeight: FontWeight.bold))
                                   ])),
                         SizedBox(
-                          width: SizesHelper.width(5),
+                          width: context.getWidth(5),
                         ),
                         _balanceIconVisibility(
                             icon: state.balanceStatus == BalanceStatus.displayed
@@ -85,11 +89,13 @@ class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
                 ),
               ),
             ),
-             Align(
+            Align(
               alignment: Alignment.topLeft,
               child: InkWell(
-                overlayColor: const MaterialStatePropertyAll(Colors.transparent),
-                onTap: ()=>Navigator.of(context).pushNamed(RoutesNames.settings),
+                overlayColor:
+                    const MaterialStatePropertyAll(Colors.transparent),
+                onTap: () =>
+                    Navigator.of(context).pushNamed(RoutesNames.settings),
                 child: const Icon(
                   Icons.settings,
                   color: Colors.white,
@@ -107,7 +113,8 @@ class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
   double get maxExtent => maxAppBarSize <= 0
       ? (kToolbarHeight + kToolbarHeight * 0.4)
       : maxAppBarSize;
-///return default appbar value if [minAppBarSize] is under 0.
+
+  ///return default appbar value if [minAppBarSize] is under 0.
   @override
   double get minExtent => minAppBarSize <= 0 ? kToolbarHeight : minAppBarSize;
 
@@ -117,26 +124,25 @@ class CustomSliverAppBar extends SliverPersistentHeaderDelegate {
   }
 
   ///Show eight points if [BalanceStatus] is hidden[BalanceStatus.hidden]
-  Widget _hidder() {
+  Widget _hidder({required BuildContext context}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ...List.generate(
             8,
             (index) => Container(
-                  width: SizesHelper.width(10),
-                  height: SizesHelper.width(10),
-                  margin:
-                      EdgeInsets.symmetric(horizontal: SizesHelper.width(1)),
+                  width: context.getWidth(10),
+                  height: context.getHeight(10),
+                  margin: EdgeInsets.symmetric(horizontal: context.getWidth(1)),
                   decoration: BoxDecoration(
-                      color: ColorsHelper.secondaryColor().withOpacity(.8),
+                      color: ColorsHelper.secondaryColor.withOpacity(.8),
                       shape: BoxShape.circle),
                 ))
       ],
     );
   }
 
-///change icon if [BalanceStatus] switch or change
+  ///change icon if [BalanceStatus] switch or change
   Widget _balanceIconVisibility({required IconData icon}) {
     return Icon(
       icon,

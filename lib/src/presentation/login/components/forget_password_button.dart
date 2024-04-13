@@ -28,7 +28,7 @@ class ForgetPasswordButton extends StatelessWidget {
           onTap: onTap,
           child: Text(
             "Oublié votre code secret?",
-            style: TextStyle(color: ColorsHelper.secondaryColor()),
+            style: TextStyle(color: ColorsHelper.secondaryColor),
           ),
         );
       },

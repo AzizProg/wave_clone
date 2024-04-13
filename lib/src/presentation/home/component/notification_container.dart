@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wave_clone/src/core/extension/size_extension.dart';
 import 'package:wave_clone/src/core/helpers/asset_helper.dart';
+import 'package:wave_clone/src/core/helpers/color_helper.dart';
 
 import '_notification_tile.dart';
 
@@ -24,7 +25,7 @@ class NotificationContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey.withOpacity(.4),
+      color: ColorsHelper.backgroundColor,
       height: context.getHeight(130),
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: PageView.builder(
